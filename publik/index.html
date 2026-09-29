@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Geolocation</title>
 </head>
 
 <body>
@@ -15,8 +15,25 @@
         Kota :
         <span id="lokasi"></span>
     </p>
+        Koordinat :
+        <span id="negara"></span>
+    </p>
 
-    <hr>
+    <script>
+    fetch("/api/lokasi")
+        .then(response => response.json())
+        .then(data => {
+
+            console.log(data);
+
+            document.getElementById("lokasi").innerHTML = data.kota;
+            document.getElementById("negara").innerHTML = data.koordinat;
+        })
+        .catch(error => {
+            console.error("Error:", error);
+        });
+
+    </script>
 
 </body>
 </html>
